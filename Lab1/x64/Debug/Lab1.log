@@ -1,0 +1,32 @@
+﻿  datetime.cpp
+C:\Users\Jan Erik Naess\source\repos\LabOne\Lab1\datetime.cpp(50,59): warning C4244: '=': conversion from 'double' to 'long', possible loss of data
+C:\Users\Jan Erik Naess\source\repos\LabOne\Lab1\datetime.cpp(173,27): warning C4244: '=': conversion from 'double' to 'long', possible loss of data
+C:\Users\Jan Erik Naess\source\repos\LabOne\Lab1\datetime.cpp(174,34): warning C4244: '=': conversion from 'double' to 'long', possible loss of data
+C:\Users\Jan Erik Naess\source\repos\LabOne\Lab1\datetime.cpp(194,28): warning C4244: '=': conversion from 'double' to 'long', possible loss of data
+C:\Users\Jan Erik Naess\source\repos\LabOne\Lab1\datetime.cpp(195,35): warning C4244: '=': conversion from 'double' to 'long', possible loss of data
+C:\Users\Jan Erik Naess\source\repos\LabOne\Lab1\datetime.cpp(198,15): warning C4244: '=': conversion from 'double' to 'long', possible loss of data
+  LSA.cpp
+  main.cpp
+  NRinexUtils.cpp
+  rinex.cpp
+C:\Users\Jan Erik Naess\source\repos\LabOne\Lab1\rinex.cpp(1764,10): warning C4101: 'slen': unreferenced local variable
+C:\Users\Jan Erik Naess\source\repos\LabOne\Lab1\rinex.cpp(1813,28): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\Jan Erik Naess\source\repos\LabOne\Lab1\rinex.cpp(1887,20): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\Jan Erik Naess\source\repos\LabOne\Lab1\rinex.cpp(1926,20): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\Jan Erik Naess\source\repos\LabOne\Lab1\rinex.cpp(2540,19): warning C4101: 'headerRecordFlag': unreferenced local variable
+C:\Users\Jan Erik Naess\source\repos\LabOne\Lab1\rinex.cpp(2870,26): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\Jan Erik Naess\source\repos\LabOne\Lab1\rinex.cpp(3261,19): warning C4101: 'slen': unreferenced local variable
+C:\Users\Jan Erik Naess\source\repos\LabOne\Lab1\rinex.cpp(3255,19): warning C4101: 'appendLen': unreferenced local variable
+C:\Users\Jan Erik Naess\source\repos\LabOne\Lab1\rinex.cpp(4014,19): warning C4101: 'i': unreferenced local variable
+C:\Users\Jan Erik Naess\source\repos\LabOne\Lab1\rinex.cpp(4175,19): warning C4101: 'l': unreferenced local variable
+C:\Users\Jan Erik Naess\source\repos\LabOne\Lab1\rinex.cpp(4805,19): warning C4101: 'i': unreferenced local variable
+C:\Users\Jan Erik Naess\source\repos\LabOne\Lab1\rinex.cpp(4914,19): warning C4101: 'l': unreferenced local variable
+C:\Users\Jan Erik Naess\source\repos\LabOne\Lab1\rinex.cpp(5372,19): warning C4101: 'i': unreferenced local variable
+C:\Users\Jan Erik Naess\source\repos\LabOne\Lab1\rinex.cpp(5482,19): warning C4101: 'l': unreferenced local variable
+C:\Users\Jan Erik Naess\source\repos\LabOne\Lab1\rinex.cpp(6126,19): warning C4101: 'l': unreferenced local variable
+C:\Users\Jan Erik Naess\source\repos\LabOne\Lab1\rinex.cpp(6868,19): warning C4101: 'i': unreferenced local variable
+C:\Users\Jan Erik Naess\source\repos\LabOne\Lab1\rinex.cpp(6866,19): warning C4101: 'l': unreferenced local variable
+C:\Users\Jan Erik Naess\source\repos\LabOne\Lab1\rinex.cpp(7058,21): warning C4101: 'i': unreferenced local variable
+  Generating Code...
+  LINK : C:\Users\Jan Erik Naess\source\repos\LabOne\Lab1\x64\Debug\Lab1.exe not found or not built by the last incremental link; performing full link
+  Lab1.vcxproj -> C:\Users\Jan Erik Naess\source\repos\LabOne\Lab1\x64\Debug\Lab1.exe
