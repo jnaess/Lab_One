@@ -1,6 +1,5 @@
-// test edit
-//test #3
-//Summary:
+// Jan Erik Naess and Claire Mah
+// Summary:
 //    Skeleton program to open a RINEX observation file and scroll through all
 //    of the epochs.  Students in ENGO 465 will use this to develop code to compute
 //    a least-squares solution using data from a standalone GPS receiver.
