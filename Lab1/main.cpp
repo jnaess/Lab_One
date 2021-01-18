@@ -1,4 +1,5 @@
-// Summary:
+// test edit
+//Summary:
 //    Skeleton program to open a RINEX observation file and scroll through all
 //    of the epochs.  Students in ENGO 465 will use this to develop code to compute
 //    a least-squares solution using data from a standalone GPS receiver.
@@ -13,10 +14,10 @@
 //    University of Calgary
 //
 // Disclaimer:
-//    This source code is not freeware nor shareware and is only provided under 
-//    an agreement between authorized users/licensees and the University of 
-//    Calgary (Position, Location And Navigation (PLAN) Group, Geomatics 
-//    Engineering, Schulich School of Engineering) and may only be used under 
+//    This source code is not freeware nor shareware and is only provided under
+//    an agreement between authorized users/licensees and the University of
+//    Calgary (Position, Location And Navigation (PLAN) Group, Geomatics
+//    Engineering, Schulich School of Engineering) and may only be used under
 //    the terms and conditions set forth therein.
 
 #include <iostream>
@@ -56,7 +57,7 @@ int main( int argc, char* argv[] )
 
 
 
-//==>>  TO BE COMPLETED  
+//==>>  TO BE COMPLETED
 
 
 
@@ -66,7 +67,7 @@ int main( int argc, char* argv[] )
 
 
 
-//==>>  TO BE COMPLETED  
+//==>>  TO BE COMPLETED
 
 
 
@@ -91,7 +92,7 @@ int main( int argc, char* argv[] )
    // START: Main processing loop
 
 
-  
+
    // end of program
    return 0;
 }
