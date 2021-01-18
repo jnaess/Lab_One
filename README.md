@@ -6,6 +6,7 @@
 #### git add file_name or *
 #### git commit -m "message of the work thats being committed"
 #### git push
+#### git pull
 ### Function Documentation:
 #### 
 /*
