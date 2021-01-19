@@ -4,7 +4,7 @@
 #include <Eigen/Dense>
 #include <iomanip>
 
-//using namespace Eigen;
+using namespace Eigen;
 
 class LSA {
 	public:
