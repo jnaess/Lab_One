@@ -32,7 +32,15 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
+		<Unit filename="LSA.cpp" />
+		<Unit filename="LSA.h" />
+		<Unit filename="NRinexUtils.cpp" />
+		<Unit filename="NRinexUtils.h" />
+		<Unit filename="datetime.cpp" />
+		<Unit filename="datetime.h" />
 		<Unit filename="main.cpp" />
+		<Unit filename="rinex.cpp" />
+		<Unit filename="rinex.h" />
 		<Extensions>
 			<lib_finder disable_auto="1" />
 		</Extensions>
