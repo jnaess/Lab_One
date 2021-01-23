@@ -36,11 +36,14 @@
 		<Unit filename="LSA.h" />
 		<Unit filename="NRinexUtils.cpp" />
 		<Unit filename="NRinexUtils.h" />
+		<Unit filename="data_v2.21o" />
 		<Unit filename="datetime.cpp" />
 		<Unit filename="datetime.h" />
 		<Unit filename="main.cpp" />
 		<Unit filename="rinex.cpp" />
 		<Unit filename="rinex.h" />
+		<Unit filename="satpos.txt" />
+		<Unit filename="true pos.txt" />
 		<Extensions>
 			<lib_finder disable_auto="1" />
 		</Extensions>

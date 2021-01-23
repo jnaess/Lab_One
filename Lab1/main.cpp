@@ -43,10 +43,12 @@ int main( int argc, char* argv[] )
    // START: Get necessary input
 
    // prompt for obs file name
+   //data_v2.21o
    cout << "Please enter the name of the RINEX observation file: ";
    getline( cin, obsFilename );
 
    // prompt for file with satellite positions
+   //satpos.txt
    cout << "Please enter the name of the file containing the satellite positions: ";
    getline( cin, satFilename );
 
@@ -55,9 +57,13 @@ int main( int argc, char* argv[] )
    //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
    // START: Open the file containing the satellite positions
 
-
-
-//==>>  TO BE COMPLETED
+    ifstream satellites;
+    satellites.open(satFilename);
+	if (satellites.fail())
+	{
+		cout << "failed" << endl;
+		exit(0);
+	}
 
 
 
@@ -65,10 +71,12 @@ int main( int argc, char* argv[] )
    //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
    // START: Open an output file for the solution
 
-
-
-//==>>  TO BE COMPLETED
-
+    ofstream output;
+    if(output.fail())
+    {
+        cout << "Could not open output file \n";
+        exit(1);
+    }
 
 
    // END: Open an output file for the solution
@@ -85,12 +93,9 @@ int main( int argc, char* argv[] )
    }
 
 
-
-
    // END: Open the input and output RINEX observation files
    //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
    // START: Main processing loop
-
 
 
    // end of program
