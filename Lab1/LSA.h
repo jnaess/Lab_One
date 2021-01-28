@@ -1,22 +1,35 @@
 #pragma once
 
+#include "Measurement.h"
+#include "rinex.h"
+#include "NRinexUtils.h"
+#include "Epoch.h"
+#include "LSA.h"
+
+using namespace std;
+using namespace NGSrinex;
+using namespace NRinexUtils;
+
+#include <vector>
 #include <cmath>
 #include <Eigen/Dense>
 #include <iomanip>
-#include <string>
-#include <iostream>
 
 using namespace Eigen;
-using namespace std;
 
 class LSA {
-	public:
+    friend class Epoch;
+    public:
+    //Constructor
+    LSA();
+
 
     int N_sat;          //number of satellites/number of observations
     int N_iter=0;       //number of iterations
 
     MatrixXd l_o;       //pseudorange observations
     MatrixXd x_o;       //initial estimate. Parameters x, y, z, t
+    MatrixXd satpos;    //x y z coordinates of satellites
     MatrixXd C_l;       //variance matrix of observations
     MatrixXd P;         //weight matrix
     double apriori=1;   //apriori variance factor
@@ -29,6 +42,8 @@ class LSA {
     MatrixXd w;         //misclosure vector
     MatrixXd C_xcap;    //variance covariance of estimate
     MatrixXd v;         //residuals
+
+    void copyEpoch2LSA(Epoch epoch);
 
     /*Function: adjustment
     Runs an iterative least squares adjustment
@@ -58,4 +73,8 @@ class LSA {
     Outputs: None
     */
     void weights();
+
 };
+
+    void print_mat(MatrixXd mat);
+

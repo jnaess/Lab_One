@@ -22,82 +22,30 @@
 
 #include <iostream>
 #include <fstream>
+#include <sstream>
 
-#include "LSA.h"
 #include "rinex.h"
 #include "NRinexUtils.h"
-#include <vector>
+#include "LSA.h"
+#include "data.h"
+#include "Measurement.h"
+#include "Epoch.h"
+
 
 using namespace std;
 using namespace NGSrinex;
+using namespace NRinexUtils;
 
 
 
 int main( int argc, char* argv[] )
 {
-   // input file names
-   string obsFilename;
-   string satFilename;
+    //test that a measurement is properly added
+    /*string line = "5 -22032612.69069 4715954.08976 14056228.45825 9125.04961";
+    Measurement meas = Measurement(line, -1.0);
+    meas.Output();*/
 
-   //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-   // START: Get necessary input
-
-   // prompt for obs file name
-   //data_v2.21o
-   cout << "Please enter the name of the RINEX observation file: ";
-   getline( cin, obsFilename );
-
-   // prompt for file with satellite positions
-   //satpos.txt
-   cout << "Please enter the name of the file containing the satellite positions: ";
-   getline( cin, satFilename );
-
-
-   // END: Get necessary input
-   //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-   // START: Open the file containing the satellite positions
-
-    ifstream satellites;
-    satellites.open(satFilename);
-	if (satellites.fail())
-	{
-		cout << "failed" << endl;
-		exit(0);
-	}
-
-
-
-   // END: Open the file containing the satellite positions
-   //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-   // START: Open an output file for the solution
-
-    ofstream output;
-    if(output.fail())
-    {
-        cout << "Could not open output file \n";
-        exit(1);
-    }
-
-
-   // END: Open an output file for the solution
-   //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-   // START: Open the RINEX observation file
-
-
-   // input RINEX file
-   RinexObsFile inObsFile;
-   if( !NRinexUtils::OpenRinexObservationFileForInput( inObsFile, obsFilename ) )
-   {
-      cout << "Could not open input observation file \"" << obsFilename << "\"...quitting." << endl;
-      return 0;
-   }
-
-
-   // END: Open the input and output RINEX observation files
-   //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-   // START: Main processing loop
-
-
-   // end of program
-   return 0;
+    data obj = data();
+    cout << "Epochs: " << obj.Epochs.size() << endl;
+    return 0;
 }
