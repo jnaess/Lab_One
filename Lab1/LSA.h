@@ -20,9 +20,9 @@ using namespace Eigen;
 class LSA {
     friend class Epoch;
     public:
+
     //Constructor
     LSA();
-
 
     int N_sat;          //number of satellites/number of observations
     int N_iter=0;       //number of iterations
@@ -43,6 +43,11 @@ class LSA {
     MatrixXd C_xcap;    //variance covariance of estimate
     MatrixXd v;         //residuals
 
+    /*Function: copyEpoch2LSA
+    Copies observations, satellite positions, and number of satellites from epoch class
+    Inputs: Epoch object for current epoch
+    Outputs: None
+    */
     void copyEpoch2LSA(Epoch epoch);
 
     /*Function: adjustment
@@ -75,6 +80,10 @@ class LSA {
     void weights();
 
 };
-
-    void print_mat(MatrixXd mat);
+    /*Function: print_mat
+    Prints matrix to console
+    Inputs: MatrixXd to be printed and string for a label
+    Outputs: None
+    */
+    void print_mat(MatrixXd mat, string name);
 

@@ -45,6 +45,7 @@ void LSA::adjustment()
     //read observations, etc
     //populate x_o, l_o,
 
+
 	this->designA();
 	this->misclosure();
 	this->weights();
@@ -56,17 +57,23 @@ void LSA::adjustment()
 //    x_cap.resize(x_o.rows(), x_o.cols());
 //    l_cap.resize(l_o.rows(), l_o.cols());
 
-    //print_mat(A);
-    //print_mat(P);
+
 	N = A.transpose() * P * A;
-	U = A.transpose() * P * l_o;
+	U = A.transpose() * P * w;
 	delta = -1*N.inverse() * U;
 	v = A * delta + w;
 
 	x_cap = x_o + delta;
 	l_cap = l_o + v;
 
-	print_mat(delta);
+    print_mat(satpos, "satpos");
+    print_mat(A, "A");
+    print_mat(w, "w");
+    print_mat(P, "P");
+	print_mat(delta, "delta");
+	print_mat(x_cap, "x_cap");
+	print_mat(l_cap, "l_cap");
+	print_mat(v, "v");
 
     for (int i = 0; i < delta.rows(); ++i)
     {
@@ -99,7 +106,7 @@ void LSA::misclosure()
     for(int i = 0; i<w.rows(); ++i)
     {
         double p_o = sqrt(pow(satpos(i,0)-x_o(0,0),2) + pow(satpos(i,1)-x_o(1,0),2) + pow(satpos(i,2)-x_o(2,0),2));
-        w(i,0) = l_o(i,0)-p_o; //+cdt_r??
+        w(i,0) = p_o-l_o(i,0) -x_o(3,0); //+cdt_r??
     }
 }
 
@@ -111,9 +118,9 @@ void LSA::weights()
     P = apriori*C_l.inverse();
 }
 
-void print_mat(MatrixXd mat)
+void print_mat(MatrixXd mat, string name)
 {
-    cout << "Matrix \n";
+    cout << "\n" << name << "\n";
     for(int i = 0; i<mat.rows(); ++i)
     {
         for(int j = 0; j<mat.cols(); ++j)
