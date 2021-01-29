@@ -14,6 +14,9 @@ using namespace NRinexUtils;
 #include <cmath>
 #include <Eigen/Dense>
 #include <iomanip>
+#include <iostream>
+#include <fstream>
+#include <string>
 
 using namespace Eigen;
 
@@ -40,8 +43,14 @@ class LSA {
     MatrixXd delta;     //correction vector
     MatrixXd A;         //design matrix
     MatrixXd w;         //misclosure vector
-    MatrixXd C_xcap;    //variance covariance of estimate
+    MatrixXd Cx;        //variance covariance of estimate
     MatrixXd v;         //residuals
+    MatrixXd Qx;        //matrix for DOP = N.inverse()
+    double GDOP;        //geometric dilution of precision
+    double PDOP;        //position DOP
+    double HDOP;        //horizontal DOP
+    double VDOP;        //vertical DOP
+    MatrixXd R;         //Rottion matrix from xyz to neu
 
     /*Function: copyEpoch2LSA
     Copies observations, satellite positions, and number of satellites from epoch class
@@ -79,6 +88,26 @@ class LSA {
     */
     void weights();
 
+    /*Function: precision
+    Calculates values of precision, including Cx, Qx, and DOP
+    Inputs: None
+    Outputs: None
+    */
+    void precision();
+
+    /*Function: output_x
+    Writes position of reciever to a text file, one line per epoch
+    Inputs: name of file
+    Outputs: None
+    */
+    void output_x(string name);
+
+    /*Function: output_DOP
+    Writes DOP values to a text file, one line per epoch
+    Inputs: which dop, name of file
+    Outputs: None
+    */
+    //void output_DOP(double dop, string name);
 };
     /*Function: print_mat
     Prints matrix to console

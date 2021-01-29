@@ -185,8 +185,13 @@ void data::readObsFile(string obsFilename){
         LSA lsa = LSA();
         lsa.copyEpoch2LSA(this->Epochs[epochCounter]);
         lsa.adjustment();
+        lsa.precision();
 
          // TO BE COMPLETED: Output the result for the current epoch to file
+         //need to output position, position in NEU, DOP's for plotting
+
+        lsa.output_x("output_xyz.txt");
+
         epochCounter = epochCounter + 1;
       }// for all epochs in the RINEX file...
 

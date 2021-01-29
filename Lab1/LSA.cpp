@@ -66,14 +66,14 @@ void LSA::adjustment()
 	x_cap = x_o + delta;
 	l_cap = l_o + v;
 
-    print_mat(satpos, "satpos");
-    print_mat(A, "A");
-    print_mat(w, "w");
-    print_mat(P, "P");
-	print_mat(delta, "delta");
-	print_mat(x_cap, "x_cap");
-	print_mat(l_cap, "l_cap");
-	print_mat(v, "v");
+//    print_mat(satpos, "satpos");
+//    print_mat(A, "A");
+//    print_mat(w, "w");
+//    print_mat(P, "P");
+//	print_mat(delta, "delta");
+//	print_mat(x_cap, "x_cap");
+//	print_mat(l_cap, "l_cap");
+//	print_mat(v, "v");
 
     for (int i = 0; i < delta.rows(); ++i)
     {
@@ -106,7 +106,7 @@ void LSA::misclosure()
     for(int i = 0; i<w.rows(); ++i)
     {
         double p_o = sqrt(pow(satpos(i,0)-x_o(0,0),2) + pow(satpos(i,1)-x_o(1,0),2) + pow(satpos(i,2)-x_o(2,0),2));
-        w(i,0) = p_o-l_o(i,0) -x_o(3,0); //+cdt_r??
+        w(i,0) = p_o-l_o(i,0) -x_o(3,0);
     }
 }
 
@@ -117,6 +117,32 @@ void LSA::weights()
 
     P = apriori*C_l.inverse();
 }
+
+void LSA::precision()
+{
+    Qx = (A.transpose()*P*A).inverse();
+    //Cx = apriori*Qx;
+    GDOP = sqrt(Qx(0,0)+Qx(1,1)+Qx(2,2)+Qx(3,3));
+    PDOP = sqrt(Qx(0,0)+Qx(1,1)+Qx(2,2));
+
+    R.resize(4,4);
+    //Need lat and lon to calculate rotation matrix
+
+    //HDOP =
+    //VDOP =
+}
+
+void LSA::output_x(string name)
+{
+    ofstream outfile;
+    outfile.open(name, ios::app);   //will continue to append each time you run. Clear file or create new
+    if (outfile.fail())
+    {
+        cout << "could not open output file";
+    }
+    outfile << fixed << setprecision(3) << x_cap(0,0) << " " << x_cap(1,0) << " " << x_cap(2,0) << " \n";
+}
+
 
 void print_mat(MatrixXd mat, string name)
 {
