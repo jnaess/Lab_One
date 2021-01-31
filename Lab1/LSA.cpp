@@ -33,7 +33,6 @@ void LSA::copyEpoch2LSA(Epoch epoch)
         satpos(i,1) = epoch.meas[i].Y;
         satpos(i,2) = epoch.meas[i].Z;
     }
-
 }
 
 
@@ -118,18 +117,23 @@ void LSA::weights()
     P = apriori*C_l.inverse();
 }
 
-void LSA::precision()
+void LSA::precision(MatrixXd truepos)
 {
     Qx = (A.transpose()*P*A).inverse();
     //Cx = apriori*Qx;
-    GDOP = sqrt(Qx(0,0)+Qx(1,1)+Qx(2,2)+Qx(3,3));
-    PDOP = sqrt(Qx(0,0)+Qx(1,1)+Qx(2,2));
+    GDOP = sqrt(Qx(0,0)+Qx(1,1)+Qx(2,2)+Qx(3,3));   //x y z cdt
+    PDOP = sqrt(Qx(0,0)+Qx(1,1)+Qx(2,2));           //x y z
 
+    //assume sphere, all in radians
+    double lat = asin(truepos(2,0)/sqrt(pow(truepos(0,0),2)+pow(truepos(1,0),2)+pow(truepos(2,0),2)));
+    double lon = asin(truepos(1,0)/sqrt(pow(truepos(0,0),2)+pow(truepos(1,0),2)+pow(truepos(2,0),2)))/cos(lat);
+    cout << "lat " << lat << " lon " << lon << "\n";
     R.resize(4,4);
-    //Need lat and lon to calculate rotation matrix
+    R << -sin(lat)*cos(lon), -sin(lat)*cos(lon), cos(lat), 0, -sin(lon), cos(lon), 0, 0, cos(lat)*cos(lon), cos(lat)*sin(lon), sin(lat), 0, 0, 0, 0, 1;
 
-    //HDOP =
-    //VDOP =
+    MatrixXd QL = R*Qx*R.transpose();
+    HDOP = sqrt(QL(0,0)+QL(1,1));   //North and east
+    VDOP = sqrt(QL(2,2));           //up
 }
 
 void LSA::output_x(string name)
@@ -143,6 +147,16 @@ void LSA::output_x(string name)
     outfile << fixed << setprecision(3) << x_cap(0,0) << " " << x_cap(1,0) << " " << x_cap(2,0) << " \n";
 }
 
+void LSA::output_DOP(string name)
+{
+    ofstream outfile;
+    outfile.open(name, ios::app);   //will continue to append each time you run. Clear file or create new
+    if (outfile.fail())
+    {
+        cout << "could not open output file";
+    }
+    outfile << fixed << setprecision(3) << N_sat << " " << GDOP << " " << PDOP << " " << HDOP << " " << VDOP << " \n";
+}
 
 void print_mat(MatrixXd mat, string name)
 {

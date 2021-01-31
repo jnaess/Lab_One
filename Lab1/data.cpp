@@ -7,7 +7,10 @@ data::data(){
     // input file names
    string obsFilename = "data_v2.21o";
    string satFilename = "satpos.txt";
+   string positionFilename = "true pos.txt";
 
+
+   readTruePosFile(positionFilename);
 
    //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
    // START: Get necessary input
@@ -43,6 +46,7 @@ data::data(){
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
    // START: Open the RINEX observation fil
    readObsFile(obsFilename);
+
 }
 
 void data::readSatFile(string filename){
@@ -185,12 +189,13 @@ void data::readObsFile(string obsFilename){
         LSA lsa = LSA();
         lsa.copyEpoch2LSA(this->Epochs[epochCounter]);
         lsa.adjustment();
-        lsa.precision();
+        lsa.precision(truepos);
 
          // TO BE COMPLETED: Output the result for the current epoch to file
          //need to output position, position in NEU, DOP's for plotting
 
         lsa.output_x("output_xyz.txt");
+        lsa.output_DOP("output_dop.txt");
 
         epochCounter = epochCounter + 1;
       }// for all epochs in the RINEX file...
@@ -208,3 +213,19 @@ void data::readObsFile(string obsFilename){
 void data::epochSatMeas(int satNum, int epochCounter, double pseudorange){
     Epochs[epochCounter].findSat(satNum)->setObs(pseudorange);
 }
+
+void data::readTruePosFile(string positionFilename)
+{
+    ifstream in;
+    in.open(positionFilename);
+    if(in.fail())
+    {
+        cout << "could not open true position file";
+    }
+    truepos.resize(3,1);
+    for(int i = 0; i < 3; ++i)
+    {
+        in >> truepos(i,0);
+    }
+}
+

@@ -25,6 +25,8 @@ class data {
 
     double currEpoch;
 
+    MatrixXd truepos;
+
     /*
     Definition:
         Default contructor, does nothing
@@ -80,4 +82,13 @@ class data {
     void epochSatMeas(int satNum, int epochCounter, double pseudorange);
 
 
+    /*
+    Definition:
+        Reads the true position file
+    Input:
+
+    Output:
+
+    */
+    void readTruePosFile(string positionFilename = "true pos.txt");
 };

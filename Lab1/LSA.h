@@ -93,7 +93,7 @@ class LSA {
     Inputs: None
     Outputs: None
     */
-    void precision();
+    void precision(MatrixXd truepos);
 
     /*Function: output_x
     Writes position of reciever to a text file, one line per epoch
@@ -107,7 +107,7 @@ class LSA {
     Inputs: which dop, name of file
     Outputs: None
     */
-    //void output_DOP(double dop, string name);
+    void output_DOP(string name);
 };
     /*Function: print_mat
     Prints matrix to console
