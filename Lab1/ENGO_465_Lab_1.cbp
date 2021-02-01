@@ -32,14 +32,22 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
+		<Unit filename="Epoch.cpp" />
+		<Unit filename="Epoch.h" />
 		<Unit filename="LSA.cpp" />
 		<Unit filename="LSA.h" />
+		<Unit filename="Measurement.cpp" />
+		<Unit filename="Measurement.h" />
 		<Unit filename="NRinexUtils.cpp" />
 		<Unit filename="NRinexUtils.h" />
+		<Unit filename="data.cpp" />
+		<Unit filename="data.h" />
 		<Unit filename="data_v2.21o" />
 		<Unit filename="datetime.cpp" />
 		<Unit filename="datetime.h" />
 		<Unit filename="main.cpp" />
+		<Unit filename="output_dop.txt" />
+		<Unit filename="output_xyz.txt" />
 		<Unit filename="rinex.cpp" />
 		<Unit filename="rinex.h" />
 		<Unit filename="satpos.txt" />

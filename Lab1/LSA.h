@@ -46,6 +46,7 @@ class LSA {
     MatrixXd Cx;        //variance covariance of estimate
     MatrixXd v;         //residuals
     MatrixXd Qx;        //matrix for DOP = N.inverse()
+    MatrixXd QL;        //Qx rotated for NEU
     double GDOP;        //geometric dilution of precision
     double PDOP;        //position DOP
     double HDOP;        //horizontal DOP
@@ -104,10 +105,17 @@ class LSA {
 
     /*Function: output_DOP
     Writes DOP values to a text file, one line per epoch
-    Inputs: which dop, name of file
+    Inputs: name of file
     Outputs: None
     */
     void output_DOP(string name);
+
+    /*Function: output_sigma
+    Writes standard deviation values to a text file, E, N, U. one line per epoch
+    Inputs: name of file
+    Outputs: None
+    */
+    void output_sigma(string name);
 };
     /*Function: print_mat
     Prints matrix to console

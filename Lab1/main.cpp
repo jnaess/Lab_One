@@ -40,11 +40,6 @@ using namespace NRinexUtils;
 
 int main( int argc, char* argv[] )
 {
-    //test that a measurement is properly added
-    /*string line = "5 -22032612.69069 4715954.08976 14056228.45825 9125.04961";
-    Measurement meas = Measurement(line, -1.0);
-    meas.Output();*/
-
     data obj = data();
     cout << "Epochs: " << obj.Epochs.size() << endl;
     return 0;

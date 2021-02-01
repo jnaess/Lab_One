@@ -30,20 +30,8 @@ data::data(){
 
     readSatFile(satFilename);
 
-
-
    // END: Open the file containing the satellite positions
-   //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-   // START: Open an output file for the solution
-
-
-
-//==>>  TO BE COMPLETED
-
-
-
-   // END: Open an output file for the solution
-//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
    // START: Open the RINEX observation fil
    readObsFile(obsFilename);
 
@@ -184,18 +172,19 @@ void data::readObsFile(string obsFilename){
             }// for all satellites...
 
          //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-        //Epoch epoch;
 
+         //run least squares adjustment for this epoch
         LSA lsa = LSA();
         lsa.copyEpoch2LSA(this->Epochs[epochCounter]);
         lsa.adjustment();
         lsa.precision(truepos);
 
-         // TO BE COMPLETED: Output the result for the current epoch to file
-         //need to output position, position in NEU, DOP's for plotting
+         // Output the result for the current epoch to file
+         //need to output position, position in ENU, DOP's for plotting
 
-        lsa.output_x("output_xyz.txt");
-        lsa.output_DOP("output_dop.txt");
+        //lsa.output_x("output_xyz.txt");
+        //lsa.output_DOP("output_dop.txt");
+        //lsa.output_sigma("output_stdev.txt");
 
         epochCounter = epochCounter + 1;
       }// for all epochs in the RINEX file...
