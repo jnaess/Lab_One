@@ -21,10 +21,14 @@ void LSA::copyEpoch2LSA(Epoch epoch)
     }
 
     x_o.resize(4,1);
-    for(int i = 0; i<x_o.rows(); ++i)
-    {
-        x_o(i,0) = 0;
-    }
+    x_o(0,0) = -1641890.0812;
+    x_o(1,0) = -3664879.3462;
+    x_o(2,0) = 4939969.4303;
+    x_o(3,0) = 0;
+//    for(int i = 0; i<x_o.rows(); ++i)
+//    {
+//        x_o(i,0) = 0;
+//    }
 
     satpos.resize(epoch.Satelites, 3);
     for(int i = 0; i<satpos.rows(); ++i)
@@ -33,6 +37,7 @@ void LSA::copyEpoch2LSA(Epoch epoch)
         satpos(i,1) = epoch.meas[i].Y;
         satpos(i,2) = epoch.meas[i].Z;
     }
+    //print_mat(satpos, "satpos");
 }
 
 
@@ -47,7 +52,7 @@ void LSA::adjustment()
 
 	N = A.transpose() * P * A;
 	U = A.transpose() * P * w;
-	delta = -1*N.inverse() * U;
+	delta = -N.inverse() * U;
 	v = A * delta + w;
 
 	x_cap = x_o + delta;
@@ -93,7 +98,7 @@ void LSA::misclosure()
     for(int i = 0; i<w.rows(); ++i)
     {
         double p_o = sqrt(pow(satpos(i,0)-x_o(0,0),2) + pow(satpos(i,1)-x_o(1,0),2) + pow(satpos(i,2)-x_o(2,0),2));
-        w(i,0) = p_o-l_o(i,0) -x_o(3,0);
+        w(i,0) = p_o - l_o(i,0) - x_o(3,0);
     }
 }
 
@@ -118,7 +123,7 @@ void LSA::precision(MatrixXd truepos)
     //cout << "lat " << lat << " lon " << lon << "\n";
     R.resize(4,4);
     R << -sin(lat)*cos(lon), -sin(lat)*cos(lon), cos(lat), 0, -sin(lon), cos(lon), 0, 0, cos(lat)*cos(lon), cos(lat)*sin(lon), sin(lat), 0, 0, 0, 0, 1;
-    print_mat(R, "R");
+    //print_mat(R, "R");
 
     QL = R*Qx*R.transpose();
     HDOP = sqrt(QL(0,0)+QL(1,1));   //North and east

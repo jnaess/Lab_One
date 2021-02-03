@@ -18,7 +18,6 @@ class Measurement {
     double X, Y, Z;
     double correction;
 
-    //correction is not yet applied
     double obs;
 
     /*

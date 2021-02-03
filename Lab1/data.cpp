@@ -182,9 +182,9 @@ void data::readObsFile(string obsFilename){
          // Output the result for the current epoch to file
          //need to output position, position in ENU, DOP's for plotting
 
-        //lsa.output_x("output_xyz.txt");
-        //lsa.output_DOP("output_dop.txt");
-        //lsa.output_sigma("output_stdev.txt");
+        lsa.output_x("output_xyz.txt");
+        lsa.output_DOP("output_dop.txt");
+        lsa.output_sigma("output_stdev.txt");
 
         epochCounter = epochCounter + 1;
       }// for all epochs in the RINEX file...
